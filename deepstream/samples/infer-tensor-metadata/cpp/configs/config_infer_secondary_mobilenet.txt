@@ -1,0 +1,22 @@
+[property]
+gpu-id=0
+#0=RGB, 1=BGR
+model-color-format=0
+onnx-file=../models/model.onnx
+model-engine-file=../models/model.onnx_b16_gpu0_fp16.engine
+labelfile-path=../models/labels.txt
+batch-size=16
+# 0=FP32 and 1=INT8 mode
+network-mode=2
+input-object-min-width=63
+input-object-min-height=63
+process-mode=2
+model-color-format=1
+gie-unique-id=2
+operate-on-gie-id=1
+output-blob-names=predictions
+classifier-async-mode=0
+classifier-threshold=0.51
+secondary-reinfer-interval=20
+network-type=1
+output-tensor-meta=1

@@ -1,0 +1,22 @@
+[property]
+gpu-id=0
+#0=RGB, 1=BGR
+model-color-format=0
+onnx-file=../models/model.onnx
+model-engine-file=../models/model.onnx_b1_gpu0_fp16.engine
+labelfile-path=../models/labels.txt
+network-mode=2
+num-detected-classes=4
+gie-unique-id=1
+process-mode=2
+is-classifier=1
+maintain-aspect-ratio=1
+output-blob-names=predictions
+classifier-async-mode=1
+classifier-threshold=0.51
+input-object-min-width=128
+input-object-min-height=128
+operate-on-gie-id=1
+operate-on-class-ids=0
+scaling-filter=0
+scaling-compute-hw=0
