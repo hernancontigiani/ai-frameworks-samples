@@ -1,5 +1,5 @@
 # Keras to Deepstream with Mobilenet as a classifier
-![](https://developer.nvidia.com/sites/default/files/deepstreamsdk3-workflow.png)
+
 # Description
 In this example we are creating an untrained classifier Mobilenet model with Keras, translating it to ONNX format and using it in Deepstream.
 

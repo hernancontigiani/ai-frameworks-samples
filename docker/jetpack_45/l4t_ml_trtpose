@@ -1,0 +1,51 @@
+FROM nvcr.io/nvidia/l4t-ml:r32.5.0-py3
+
+RUN apt update
+
+WORKDIR /pose_workdir
+ENV JUPYTER_WORKDIR=/pose_workdir
+ENV JUPYTER_ENABLE_LAB=yes
+
+# pip dependencies for pytorch-ssd
+RUN pip3 install --verbose --upgrade Cython && \
+    pip3 install --verbose boto3 pandas
+
+# pip dependencies for trt_pose
+RUN pip3 install tqdm cython pycocotools
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+            python3-matplotlib \
+    && rm -rf /var/lib/apt/lists/*
+
+# install torch2trt
+ENV TORCH2TRT_REPO_DIR=$JUPYTER_WORKDIR
+RUN cd ${TORCH2TRT_REPO_DIR} && \
+    git clone https://github.com/NVIDIA-AI-IOT/torch2trt && \
+    cd torch2trt && \
+    python3 setup.py install --plugins
+
+
+# Install other misc packages for trt_pose
+RUN pip3 install tqdm cython pycocotools && \
+    apt-get install python3-matplotlib
+RUN pip3 install traitlets
+RUN pip3 install -U scikit-learn
+
+
+# INSTALL trt_pose
+ENV TRTPOSE_REPO_DIR=$JUPYTER_WORKDIR
+RUN cd ${TRTPOSE_REPO_DIR} && \
+    git clone https://github.com/NVIDIA-AI-IOT/trt_pose && \
+    cd trt_pose && \
+    git checkout a89b422e0d72c4d537d7d4f39d03589f7ac236c0 && \
+    python3 setup.py install
+
+# ENV JUPYTER_WORKDIR=/pose_workdir
+# ARG JUPYTER_PASSWORD=jetson
+# ENV JUPYTER_PASSWORD=${JUPYTER_PASSWORD}
+
+# Jupyter listens on 8888.
+EXPOSE 8888
+
+WORKDIR /pose_workdir
+CMD ["jupyter", "notebook", "--NotebookApp.token=''", "--NotebookApp.password=''"]

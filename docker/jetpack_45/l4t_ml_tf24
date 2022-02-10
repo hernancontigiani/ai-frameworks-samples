@@ -1,0 +1,11 @@
+FROM nvcr.io/nvidia/l4t-ml:r32.5.0-py3
+
+RUN apt update
+
+RUN pip3 install -U pip testresources setuptools==49.6.0
+RUN pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v45 tensorflow==2.4.0+nv21.2
+
+RUN apt install -y python3-opencv
+RUN pip3 install keras
+
+WORKDIR /opt/src

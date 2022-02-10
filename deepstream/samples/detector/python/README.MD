@@ -1,5 +1,5 @@
 # Deepstream generic detector example
-![](https://developer.nvidia.com/sites/default/files/deepstreamsdk3-workflow.png)
+
 # Description
 In this example testing a generic detector model, translating it to ONNX format and using it in Deepstream.
 

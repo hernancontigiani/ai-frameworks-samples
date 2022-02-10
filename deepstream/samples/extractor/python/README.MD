@@ -1,5 +1,5 @@
 # Deepstream example with generic extractor model
-![](https://developer.nvidia.com/sites/default/files/deepstreamsdk3-workflow.png)
+
 # Description
 In this example testing a generic features extractor (embedding extractor) model, translating it to ONNX format and using it in Deepstream.\
 In this case the model is takes pictures of 256x128 (heightxwidth) and extract from there 512 values (embedding 512 size) in this way:\
