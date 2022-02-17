@@ -17,5 +17,8 @@ $ python3 -m pip install tf2onnx
 ```
 
 # Scripts
-## leras2onnx.py
+## keras2onnx.py
 Use this as example to convert your keras model to ONNX. We recommend to use "opset=12" to use this model on ONNX Runtime.
+
+## age_gender_to_onnx.ipynb
+Python notebook with an example of a real Keras model (age and gender prediction) exported to ONNX
