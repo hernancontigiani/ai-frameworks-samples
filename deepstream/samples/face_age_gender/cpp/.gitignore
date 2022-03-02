@@ -1,0 +1,8 @@
+*.onnx
+*.engine
+*.weights
+*.so
+*.etlt
+
+deepstream_app_from_video
+deepstream_app_from_video.o
